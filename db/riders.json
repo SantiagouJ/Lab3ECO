@@ -1,14 +1,30 @@
 [
-    {
-        "riderId": 1,
-        "name": "Rider 1",
-        "phone": "1234567890",
-        "vehicle": "motorcycle",
-        "vehiclePlate": "1234567890",
-        "orders": [
-            {
-                "orderId": 1
-            }
-        ]
-    }
+  {
+    "riderId": 1,
+    "name": "Rider 1",
+    "phone": "1234567890",
+    "vehicle": "motorcycle",
+    "vehiclePlate": "1234567890",
+    "orders": [
+      {
+        "orderId": 1
+      },
+      {
+        "orderId": 2,
+        "acceptedAt": "2025-09-06T04:21:26.535Z"
+      },
+      {
+        "orderId": 5,
+        "acceptedAt": "2025-09-06T04:21:35.925Z"
+      },
+      {
+        "orderId": 6,
+        "acceptedAt": "2025-09-06T04:25:00.222Z"
+      },
+      {
+        "orderId": 3,
+        "acceptedAt": "2025-09-06T04:25:26.304Z"
+      }
+    ]
+  }
 ]

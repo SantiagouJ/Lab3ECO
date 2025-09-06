@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-//Json
+//Jsons
 const usersFile = path.join(__dirname, "db", "users.json");
 const storesFile = path.join(__dirname, "db", "stores.json");
 const productsFile = path.join(__dirname, "db", "products.json"); 
@@ -24,7 +24,14 @@ app.post("/login", (req, res) => {
   );
 
   if (user) {
-    res.send({ role: user.role, userId: user.userId });
+    // Si el usuario es un rider, buscar su riderId correspondiente
+    if (user.role === 'rider') {
+      const riders = JSON.parse(fs.readFileSync(path.join(__dirname, "db", "riders.json"), "utf-8"));
+      const rider = riders[0]; // Por ahora solo hay un rider
+      res.send({ role: user.role, userId: user.userId, riderId: rider.riderId });
+    } else {
+      res.send({ role: user.role, userId: user.userId });
+    }
   } else {
     res.status(401);
     res.send({ message: "Credenciales inválidas" });
@@ -94,6 +101,108 @@ app.post("/stores/:storeId/products", (req, res) => {
       message: "Error al crear el producto",
       error: error.message 
     });
+  }
+});
+
+// Obtener todas las órdenes disponibles (no asignadas a ningún rider)
+// Obtener información de un rider específico
+app.get("/riders/:riderId", (req, res) => {
+  try {
+    const { riderId } = req.params;
+    const riders = JSON.parse(fs.readFileSync(path.join(__dirname, "db", "riders.json"), "utf-8"));
+    
+    const rider = riders.find(r => r.riderId == riderId);
+    if (!rider) {
+      return res.status(404).json({ message: "Rider no encontrado" });
+    }
+    
+    res.json(rider);
+  } catch (error) {
+    console.error('Error al obtener información del rider:', error);
+    res.status(500).json({ message: "Error al obtener información del rider" });
+  }
+});
+
+// Obtener todas las órdenes
+app.get("/orders", (req, res) => {
+  try {
+    const orders = JSON.parse(fs.readFileSync(ordersFile, "utf-8"));
+    res.json(orders);
+  } catch (error) {
+    console.error('Error al obtener órdenes:', error);
+    res.status(500).json({ message: "Error al obtener las órdenes" });
+  }
+});
+
+app.get("/orders/available", (req, res) => {
+  try {
+    const orders = JSON.parse(fs.readFileSync(ordersFile, "utf-8"));
+    const riders = JSON.parse(fs.readFileSync(path.join(__dirname, "db", "riders.json"), "utf-8"));
+    
+    // Obtener los IDs de órdenes ya asignadas
+    const assignedOrderIds = new Set();
+    riders.forEach(rider => {
+      rider.orders?.forEach(order => {
+        assignedOrderIds.add(order.orderId);
+      });
+    });
+    
+    // Filtrar órdenes no asignadas
+    const availableOrders = orders.filter(order => !assignedOrderIds.has(order.orderId));
+    
+    res.json(availableOrders);
+  } catch (error) {
+    console.error('Error al obtener órdenes disponibles:', error);
+    res.status(500).json({ message: "Error al obtener las órdenes" });
+  }
+});
+
+// Aceptar una orden
+app.post("/riders/:riderId/accept-order/:orderId", (req, res) => {
+  try {
+    const { riderId, orderId } = req.params;
+    
+    // Leer archivos
+    const riders = JSON.parse(fs.readFileSync(path.join(__dirname, "db", "riders.json"), "utf-8"));
+    const orders = JSON.parse(fs.readFileSync(ordersFile, "utf-8"));
+    
+    // Verificar que la orden existe
+    const order = orders.find(o => o.orderId == orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Orden no encontrada" });
+    }
+    
+    // Verificar que el rider existe
+    const rider = riders.find(r => r.riderId == riderId);
+    if (!rider) {
+      return res.status(404).json({ message: "Rider no encontrado" });
+    }
+    
+    // Verificar que la orden no está ya asignada
+    const isOrderAssigned = riders.some(r => 
+      r.orders?.some(o => o.orderId == orderId)
+    );
+    
+    if (isOrderAssigned) {
+      return res.status(400).json({ message: "La orden ya está asignada" });
+    }
+    
+    // Añadir la orden al rider
+    if (!rider.orders) {
+      rider.orders = [];
+    }
+    rider.orders.push({
+      orderId: Number(orderId),
+      acceptedAt: new Date().toISOString()
+    });
+    
+    // Guardar cambios
+    fs.writeFileSync(path.join(__dirname, "db", "riders.json"), JSON.stringify(riders, null, 2));
+    
+    res.json({ message: "Orden aceptada exitosamente" });
+  } catch (error) {
+    console.error('Error al aceptar orden:', error);
+    res.status(500).json({ message: "Error al aceptar la orden" });
   }
 });
 

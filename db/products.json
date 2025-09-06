@@ -38,5 +38,13 @@
     "description": "13fass",
     "image": "https://cdn.colombia.com/gastronomia/2011/08/05/pandebono-1638.gif",
     "storeId": 2
+  },
+  {
+    "productId": 6,
+    "name": "123",
+    "price": 1231,
+    "description": "afqw",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTPE2CL71-V_oAdEh3EfXxAKBj5tOCQ1UtAA&s",
+    "storeId": 2
   }
 ]

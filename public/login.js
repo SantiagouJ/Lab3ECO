@@ -21,6 +21,11 @@ btn.addEventListener("click", async (e) => {
     if (response.ok) {
       window.localStorage.setItem("role", data.role);
       window.localStorage.setItem("userId", data.userId);
+      
+      // Guardar riderId si el usuario es un rider
+      if (data.role === "rider" && data.riderId) {
+        window.localStorage.setItem("riderId", data.riderId);
+      }
 
       if (data.role === "user") {
         window.location.href = "/user";

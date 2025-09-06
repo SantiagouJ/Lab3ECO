@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Panel de Repartidor</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <script src="../utils.js" type="module"></script>
-  <script src="./index.js" type="module"></script>
   <body>
-    <h1>Repartidor</h1>
+    <div class="container">
+      <h1>Panel de Repartidor</h1>
+      
+      <div class="orders-section">
+        <h2>Órdenes Disponibles</h2>
+        <div id="available-orders" class="orders-grid"></div>
+      </div>
+
+      <div class="orders-section">
+        <h2>Mis Órdenes Aceptadas</h2>
+        <div id="accepted-orders" class="orders-grid"></div>
+      </div>
+    </div>
+
+    <template id="order-template">
+      <div class="order-card">
+        <div class="order-header">
+          <h3>Orden #<span class="order-id"></span></h3>
+          <span class="order-total"></span>
+        </div>
+        <div class="order-details">
+          <p class="store-info">Tienda: <span class="store-id"></span></p>
+          <p class="payment-method"></p>
+          <div class="products-list"></div>
+        </div>
+        <button class="accept-btn">Aceptar Orden</button>
+      </div>
+    </template>
+
+    <script src="../utils.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>

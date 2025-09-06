@@ -10,8 +10,10 @@ export function checkRole(role) {
 export function getUser() {
   const savedRole = window.localStorage.getItem("role");
   const userId = window.localStorage.getItem("userId");
+  const riderId = window.localStorage.getItem("riderId");
   return {
     role: savedRole,
-    userId: userId
+    userId: userId,
+    riderId: riderId
   };
 }

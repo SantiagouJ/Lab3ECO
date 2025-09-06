@@ -70,5 +70,26 @@
         "quantity": 1
       }
     ]
+  },
+  {
+    "orderId": 6,
+    "userId": "1",
+    "storeId": 2,
+    "total": 1754,
+    "paymentMethod": "nequi",
+    "products": [
+      {
+        "productId": 4,
+        "quantity": 1
+      },
+      {
+        "productId": 5,
+        "quantity": 1
+      },
+      {
+        "productId": 6,
+        "quantity": 1
+      }
+    ]
   }
 ]
