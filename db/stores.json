@@ -1,0 +1,36 @@
+[
+    {
+        "storeId": 1,
+        "name": "Crepes y Waffles",
+        "address": "Address 1",
+        "phone": "1234567890",
+        "status": true,
+        "email": "store1@gmail.com",
+        "description": "Deliciosos crepes y waffles con una variedad de ingredientes",
+        "products": [
+            {
+                "productId": 1
+            },
+            {
+                "productId": 2
+            }
+        ]
+    },
+    {
+        "storeId": 2,
+        "name": "Hamburguesas Don Tito",
+        "address": "Address 2",
+        "phone": "1234567890",
+        "status": true,
+        "email": "store2@gmail.com",
+        "description": "Deliciosas hamburguesas con una variedad de ingredientes",
+        "products": [
+            {
+                "productId": 3
+            },
+            {
+                "productId": 4
+            }
+        ]
+    }
+]

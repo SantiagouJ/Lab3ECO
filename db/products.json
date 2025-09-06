@@ -1,0 +1,34 @@
+[
+    {
+        "productId": 1,
+        "name": "Crepes de fresa",
+        "price": 100,
+        "image": "https://www.splenda.com/wp-content/themes/bistrotheme/assets/recipe-images/strawberry-and-yogurt-crepes.jpg",
+        "storeId": 1,
+        "description": "Crepes de fresa con yogurt y frutas"
+    },
+    {
+        "productId": 2,
+        "name": "Crepes de chocolate",
+        "price": 200,
+        "image": "https://mojo.generalmills.com/api/public/content/LbGHQGIEAUeJou-isfwtjA_gmi_hi_res_jpeg.jpeg?v=f3754c8a&t=16e3ce250f244648bef28c5949fb99ff",
+        "storeId": 1,
+        "description": "Crepes de chocolate con nata y chocolate"
+    },
+    {
+        "productId": 3,
+        "name": "Hamburguesa de pollo",
+        "price": 300,
+        "image": "https://comedera.com/wp-content/uploads/sites/9/2023/07/Hamburguesa-de-pollo-picante.jpg",
+        "storeId": 2,
+        "description": "Hamburguesa de pollo con queso"
+    },
+    {
+        "productId": 4,
+        "name": "Hamburguesa de carne",
+        "price": 400,
+        "image": "https://www.recetasnestle.com.ec/sites/default/files/styles/recipe_detail_desktop_new/public/srh_recipes/4e4293857c03d819e4ae51de1e86d66a.jpg?itok=F7KRSXDy",
+        "storeId": 2,
+        "description": "Hamburguesa de carne con queso"
+    }
+]

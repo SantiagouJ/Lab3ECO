@@ -1,0 +1,14 @@
+[
+    {
+        "riderId": 1,
+        "name": "Rider 1",
+        "phone": "1234567890",
+        "vehicle": "motorcycle",
+        "vehiclePlate": "1234567890",
+        "orders": [
+            {
+                "orderId": 1
+            }
+        ]
+    }
+]

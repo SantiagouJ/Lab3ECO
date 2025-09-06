@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiendas - Rappi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="order.css">
+  </head>
+  <body>
+    <div id="order-list"></div>
+
+    <div class="payment-form">
+      <h2>Método de Pago</h2>
+      <form id="payment-form">
+        <div class="form-group">
+          <label for="payment-method">Seleccione el método de pago:</label>
+          <select id="payment-method" required>
+            <option value="">Seleccione una opción</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+            <option value="nequi">Nequi</option>
+          </select>
+        </div>
+        <button type="submit" id="confirm-order">Confirmar Pedido</button>
+      </form>
+    </div>
+
+  </body>
+  <script src="../utils.js" type="module"></script>
+  <script src="./order.js" type="module"></script>
+</html>

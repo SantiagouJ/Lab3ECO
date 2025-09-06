@@ -1,0 +1,33 @@
+[
+  {
+    "userId": 1,
+    "username": "juan",
+    "password": "1234",
+    "role": "user",
+    "age": 19,
+    "address": "cali",
+    "orders": [
+      {
+        "orderId": 1
+      }
+    ]   
+  },
+  {
+    "userId": 2,
+    "username": "tienda1",
+    "password": "1234",
+    "role": "store",
+    "storeId": 1
+  },
+  {
+    "userId": 3,
+    "username": "juandavi",
+    "password": "1234",
+    "role": "rider",
+    "orders": [
+      {
+        "orderId": 1
+      }
+    ]
+  }
+]
