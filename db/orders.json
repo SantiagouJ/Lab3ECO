@@ -57,5 +57,18 @@
         "quantity": 1
       }
     ]
+  },
+  {
+    "orderId": 5,
+    "userId": "1",
+    "storeId": 1,
+    "total": 100,
+    "paymentMethod": "efectivo",
+    "products": [
+      {
+        "productId": 1,
+        "quantity": 1
+      }
+    ]
   }
 ]

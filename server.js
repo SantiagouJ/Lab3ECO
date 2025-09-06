@@ -58,6 +58,45 @@ app.get("/stores/:storeId/products", (req, res) => {
   res.json(storeProducts);
 });
 
+// Añadir un nuevo producto
+app.post("/stores/:storeId/products", (req, res) => {
+  try {
+    const { storeId } = req.params;
+    const { name, price, description, image } = req.body;
+
+    // Validar campos requeridos
+    if (!name || !price || !description || !image) {
+      return res.status(400).json({ message: "Todos los campos son requeridos" });
+    }
+
+    const products = JSON.parse(fs.readFileSync(productsFile, "utf-8"));
+    
+    // Crear nuevo producto
+    const newProduct = {
+      productId: products.length + 1,
+      name,
+      price: Number(price),
+      description,
+      image,
+      storeId: Number(storeId)
+    };
+
+    // Agregar nuevo producto al arreglo
+    products.push(newProduct);
+
+    // Guardar productos actualizados en el archivo
+    fs.writeFileSync(productsFile, JSON.stringify(products, null, 2));
+
+    res.status(201).json(newProduct);
+  } catch (error) {
+    console.error('Error al crear producto:', error);
+    res.status(500).json({ 
+      message: "Error al crear el producto",
+      error: error.message 
+    });
+  }
+});
+
 app.post("/orders", (req, res) => {
   try {
     console.log('Received order request:', req.body);
