@@ -46,5 +46,13 @@
     "description": "afqw",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTPE2CL71-V_oAdEh3EfXxAKBj5tOCQ1UtAA&s",
     "storeId": 2
+  },
+  {
+    "productId": 7,
+    "name": "Bueñuelo",
+    "price": 50,
+    "description": "Rico buñuelo",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJFRlEZfwaYtQOLxUvbfnLMoxuyuE-HpZ-zA&s",
+    "storeId": 2
   }
 ]
